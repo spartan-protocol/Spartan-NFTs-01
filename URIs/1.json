@@ -1,0 +1,10 @@
+{
+  "name": "Alexios-Gold",
+  "description": "",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    { "trait_type": "Edition", "value": "Gold" },
+    { "trait_type": "Rarity", "value": "Rare" }
+  ],
+  "image": ".png"
+}

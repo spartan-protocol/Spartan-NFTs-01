@@ -1,0 +1,10 @@
+{
+  "name": "Alexios-Spartan",
+  "description": "",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    { "trait_type": "Edition", "value": "Spartan" },
+    { "trait_type": "Rarity", "value": "Legendary" }
+  ],
+  "image": ".png"
+}

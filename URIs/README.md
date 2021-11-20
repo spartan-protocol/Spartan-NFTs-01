@@ -1,0 +1,1 @@
+These will need to be uploaded to a url like nfts.spartanprotocol.org or similar. Ideally have them editable/centralised but the metadata linking to IPFS hosted media
