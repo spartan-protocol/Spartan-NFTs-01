@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
 
 contract SpartaBramNFTs is
     ERC1155,
@@ -18,7 +19,7 @@ contract SpartaBramNFTs is
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    string public collectionUri;
+    string private _collectionUri;
 
     uint256 private constant ALEX_SILVER = 0;
     uint256 private constant ALEX_GOLD = 1;
@@ -47,15 +48,15 @@ contract SpartaBramNFTs is
 
     uint256 private constant ATHENA = 20;
 
-    constructor(string memory _collectionUri, string memory _baseUri)
-        ERC1155(_baseUri)
+    constructor(string memory collectionUri, string memory baseUri)
+        ERC1155(baseUri)
     {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(URI_SETTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
 
-        collectionUri = _collectionUri; // CHANGE THIS TO THE METADATA FOR THE OVERALL COLLECTION WITH THE ARTIST FEE ETC
+        _collectionUri = collectionUri; // CHANGE THIS TO THE METADATA FOR THE OVERALL COLLECTION WITH THE ARTIST FEE ETC
 
         _mint(_msgSender(), ALEX_SILVER, 36, ""); // Mint Silver
         _mint(_msgSender(), ALEX_GOLD, 14, ""); // Mint Gold
@@ -136,11 +137,15 @@ contract SpartaBramNFTs is
     }
 
     // CUSTOM FUNCTIONS
-    function setCollectionUri(string memory _collectionUri)
+    function contractURI() public view returns (string memory) {
+        return _collectionUri;
+    }
+
+    function setCollectionUri(string memory collectionUri)
         external
         onlyRole(URI_SETTER_ROLE)
     {
-        collectionUri = _collectionUri;
+        _collectionUri = collectionUri;
     }
 
     function mintAthena(address to, uint256 amount) external {

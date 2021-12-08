@@ -53,8 +53,8 @@ async function main() {
   const NftContract = await ethers.getContractFactory("SpartaBramNFTs");
   console.log("--- Deploying Sparta<>Bram NFTs ---");
   const contractDeployer = await NftContract.deploy(
-    "https://nfts.spartanprotocol.org/spartabram01/", // Base URI
-    "https://nfts.spartanprotocol.org/spartabram01/index.json" // Collection URI
+    "https://nfts.spartanprotocol.org/spartabram01/index.json", // Collection URI
+    "https://nfts.spartanprotocol.org/spartabram01/{id}.json" // Base URI
   );
   await contractDeployer.deployed();
   let contractMintman = contractDeployer;
@@ -127,11 +127,20 @@ async function main() {
   balance = await contractDeployer.balanceOf(addr.deployer, ATHENA);
   console.log(addr.deployer, "has", balance.toString(), "ATHENA NFTs");
 
-  console.log("--- Test: addr.minter Should NOT be able to mint Athena NFTs ---");
+  console.log(
+    "--- Test: addr.minter Should NOT be able to mint Athena NFTs ---"
+  );
   balance = await contractMintman.balanceOf(addr.minter, ATHENA);
   console.log(addr.minter, "has", balance.toString(), "ATHENA NFTs");
-  await truffleAssert.fails(contractMintman.mintAthena(addr.minter, athenaMintQty));
-  console.log(addr.minter, "tried to mint", athenaMintQty, "ATHENA NFTs & failed (PASS!)");
+  await truffleAssert.fails(
+    contractMintman.mintAthena(addr.minter, athenaMintQty)
+  );
+  console.log(
+    addr.minter,
+    "tried to mint",
+    athenaMintQty,
+    "ATHENA NFTs & failed (PASS!)"
+  );
   balance = await contractMintman.balanceOf(addr.minter, ATHENA);
   console.log(addr.minter, "still has", balance.toString(), "ATHENA NFTs");
 
@@ -139,11 +148,19 @@ async function main() {
   await contractDeployer.grantRole(MINTER_ROLE, addr.minter);
   console.log(addr.minter, "has the ability to MINT now");
 
-  console.log("--- Test: addr.minter Should now be able to mint Athena NFTs ---");
+  console.log(
+    "--- Test: addr.minter Should now be able to mint Athena NFTs ---"
+  );
   await contractMintman.mintAthena(addr.minter, athenaMintQty);
   console.log(addr.minter, "was minted", athenaMintQty, "ATHENA NFTs");
   balance = await contractMintman.balanceOf(addr.minter, ATHENA);
   console.log(addr.minter, "has", balance.toString(), "ATHENA NFTs");
+
+  console.log("--- Check URIs ---");
+  let uri = await contractDeployer.uri(ALEX_SILVER);
+  console.log("NFT 0's URI =", uri);
+  uri = await contractDeployer.uri(ALEX_GOLD);
+  console.log("NFT 1's URI =", uri);
 }
 
 main()

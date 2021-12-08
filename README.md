@@ -5,26 +5,13 @@ yarn hardhat compile
 
 ## (Open new terminal and then:) Run scripts:
 - yarn hardhat run --network localhost [script-name]
-- ie. yarn hardhat run --network localhost scripts/deploy.js
-
-## Open console session with local blockchain:
-- yarn hardhat console --network localhost
-
-## INITIAL/SMALL QUERIES VIA CONSOLE:
-Attach contract (in console):
-- const Box = await ethers.getContractFactory('Box');
-- const box = await Box.attach('0x5FbDB2315678afecb367f032d93F642f64180aa3')
-
-Interact with contract (in console):
-- await box.store(42)
-- await box.retrieve()              // BigNumber
-- (await box.retrieve()).toString() // String
-
-## PROPER INTERACTIONS USING JS SCRIPTS (AUTOMATED TESTING ETC):
-- yarn hardhat run --network localhost scripts/index.js 
+- ie. yarn hardhat run --network localhost scripts/index.js 
 
 ## RUN ALL TESTS
 - yarn hardhat test
+
+## VALIDATE ON BSC TESTNET
+- https://tofunft.com/tools/validator
 
 ## REF MATERIAL
 - https://docs.openzeppelin.com/learn/developing-smart-contracts
