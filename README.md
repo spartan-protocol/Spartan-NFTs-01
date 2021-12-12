@@ -1,14 +1,14 @@
 yarn hardhat compile
 
-## Spin up local Hardhat Network:
+## Spin up local Hardhat Network (For manual testing, not required if using --network hardhat):
 - yarn hardhat node
 
 ## (Open new terminal and then:) Run scripts:
-- yarn hardhat run --network localhost [script-name]
-- ie. yarn hardhat run --network localhost scripts/alex721s.js 
+- yarn hardhat run --network hardhat [script-name]
+- ie. yarn hardhat run --network hardhat scripts/alex721s.js 
 
 ## RUN ALL TESTS
-- yarn hardhat test
+- yarn hardhat test --network hardhat tests/Alex721.js 
 
 ## VALIDATE ON BSC TESTNET
 - https://tofunft.com/tools/validator

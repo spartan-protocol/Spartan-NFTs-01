@@ -32,7 +32,7 @@ contract SpartaBramAlex is
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://nfts.spartanprotocol.org/spartabram-alex/";
+        return "https://nfts.spartanprotocol.org/URIs/spartabram-alex/";
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {

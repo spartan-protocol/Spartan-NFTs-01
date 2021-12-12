@@ -1,10 +1,15 @@
 {
-  "name": "Alexios-Electrum",
+  "name": "Alexios (Electrum)",
   "description": "",
   "external_url": "https://spartanprotocol.org/",
   "attributes": [
     { "trait_type": "Edition", "value": "Electrum" },
-    { "trait_type": "Rarity", "value": "Epic" }
+    { "trait_type": "Rarity", "value": "Epic" },
+    {
+      "display_type": "number",
+      "trait_type": "Mint",
+      "value": 4
+    }
   ],
   "image": ".png"
 }

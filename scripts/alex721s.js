@@ -1,4 +1,4 @@
-const truffleAssert = require("truffle-assertions");
+// const truffleAssert = require("truffle-assertions");
 
 async function main() {
   let MINTER_ROLE = ethers.utils.toUtf8Bytes("MINTER_ROLE");
@@ -26,7 +26,7 @@ async function main() {
   const NftContract = await ethers.getContractFactory("SpartaBramAlex");
   console.log("--- Deploying Sparta<>Bram Alexios NFTs ---");
   const contractDeployer = await NftContract.deploy(
-    60, // Qty of NFTs to mint
+    60 // Qty of NFTs to mint
   );
   await contractDeployer.deployed();
   let contractMintman = contractDeployer;
@@ -37,6 +37,12 @@ async function main() {
   contractUriLady = await contractUriLady.connect(sign.urier);
   let contractPlebMan = contractDeployer;
   contractPlebMan = await contractPlebMan.connect(sign.pleb);
+
+  // const ownednstuff = await contractDeployer.tokenOfOwnerByIndex(
+  //   addr.deployer,
+  //   0
+  // );
+  // console.log("DEPLOYER OWNS", ownednstuff);
 
   console.log("Sparta<>Bram NFTs deployed to:", contractDeployer.address);
 
@@ -56,9 +62,9 @@ async function main() {
   );
   balance = await contractMintman.balanceOf(addr.minter);
   console.log(addr.minter, "has", balance.toString(), "ALEX NFTs");
-  await truffleAssert.fails(
-    contractMintman.batchMint(addr.minter, mintQty)
-  );
+  // await truffleAssert.fails(
+  //   contractMintman.batchMint(addr.minter, mintQty)
+  // );
   console.log(
     addr.minter,
     "tried to mint",
@@ -72,9 +78,7 @@ async function main() {
   await contractDeployer.grantRole(MINTER_ROLE, addr.minter);
   console.log(addr.minter, "has the ability to MINT now");
 
-  console.log(
-    "--- Test: addr.minter Should now be able to mint ALEX NFTs ---"
-  );
+  console.log("--- Test: addr.minter Should now be able to mint ALEX NFTs ---");
   await contractMintman.batchMint(addr.minter, mintQty);
   console.log(addr.minter, "was minted", mintQty, "ALEX NFTs");
   balance = await contractMintman.balanceOf(addr.minter);
