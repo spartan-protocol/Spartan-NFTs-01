@@ -1,7 +1,7 @@
 {
-  "name": "Spartan Protocol <> Bram Vanhaeren Alexios Collection",
-  "description": "",
-  "image": "",
+  "name": "Spartan Protocol <> Bram Vanhaeren *TokenName* Collection",
+  "description": "*Description*",
+  "image": "*CollectionImage*",
   "external_link": "https://spartanprotocol.org",
   "seller_fee_basis_points": 1000,
   "fee_recipient": "0x02f24d25898506FE319DD277Ea67D31FbF6b08b1"

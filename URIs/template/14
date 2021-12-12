@@ -1,0 +1,21 @@
+{
+  "name": "*TokenName* (Gold)",
+  "description": "*Description*",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    {
+      "trait_type": "Edition",
+      "value": "Gold"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Mint",
+      "value": 15
+    }
+  ],
+  "image": "*Image*"
+}
