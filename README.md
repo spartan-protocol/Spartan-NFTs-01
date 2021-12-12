@@ -5,7 +5,7 @@ yarn hardhat compile
 
 ## (Open new terminal and then:) Run scripts:
 - yarn hardhat run --network localhost [script-name]
-- ie. yarn hardhat run --network localhost scripts/index.js 
+- ie. yarn hardhat run --network localhost scripts/alex721s.js 
 
 ## RUN ALL TESTS
 - yarn hardhat test
