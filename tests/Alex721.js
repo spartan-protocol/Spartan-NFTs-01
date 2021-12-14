@@ -26,8 +26,13 @@ async function accounts() {
 
 async function contracts(sign) {
   const NftContract = await ethers.getContractFactory("SpartaBramAlex");
+  const NftContractOther = await ethers.getContractFactory("SpartaBramAlexNoBase");
   const contractDeployer = await NftContract.deploy(
-    60 // Qty of NFTs to mint
+    60, // Qty of NFTs to mint
+    "ipfs://QmPKQbQuzQBW6houyKQjZqHZgY2UxBxApBxeQJebMeGniA/" // Contracts URI base
+  );
+  const contractDeployerOther = await NftContractOther.deploy(
+    60, // Qty of NFTs to mint
   );
   await contractDeployer.deployed();
   let contractMintman = contractDeployer;

@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract SpartaBramAlex is
     ERC721,
@@ -17,22 +18,25 @@ contract SpartaBramAlex is
 {
     using Counters for Counters.Counter;
 
+    string private _baseURIext;
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     Counters.Counter private _tokenIdCounter;
 
     constructor(
-        uint256 amount // Qty of NFTs to mint on construction
+        uint256 mintQty, // Qty of NFTs to mint on construction
+        string memory baseUri
     ) ERC721("SpartaBram - Alexios", "SP-ALEX") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
 
-        batchMint(msg.sender, amount);
+        _baseURIext = baseUri;
+        batchMint(msg.sender, mintQty);
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://nfts.spartanprotocol.org/URIs/spartabram-alex/";
+    function _baseURI() internal view override returns (string memory) {
+        return _baseURIext;
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -70,8 +74,12 @@ contract SpartaBramAlex is
 
     // Extra functions
 
-    function contractURI() public pure returns (string memory) {
-        return "https://nfts.spartanprotocol.org/spartabram-alex/ContractUri.json";
+    function setBaseURI(string memory baseURI_) external onlyRole(MINTER_ROLE) {
+        _baseURIext = baseURI_;
+    }
+
+    function contractURI() public view returns (string memory) {
+        return string(abi.encodePacked(_baseURI(), "ContractUri.json"));
     }
 
     function batchMint(address to, uint256 amount) public {

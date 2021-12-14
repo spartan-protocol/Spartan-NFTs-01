@@ -1,0 +1,21 @@
+{
+  "name": "Athena (Unique)",
+  "description": "Inspired by the ancient Greek rulers, defenders of Laconia's river banks - Sparta. Discover five unique illustrations portraying legendary moments in Greek history to celebrate Spartan Protocol's first NFT collection. Athena is a bonus 6th illustration unique edition, reserved only for the most loyal of Spartans.",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    {
+      "trait_type": "Edition",
+      "value": "Unique"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Godlike"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Mint",
+      "value": 40
+    }
+  ],
+  "image": "ipfs://QmNMa2K8VCZzQGbNjRy8vtHbYFC3jk4Hg156GAKszUCpGe"
+}

@@ -12,6 +12,6 @@ module.exports = {
     currency: "USD",
     token: "BNB",
     gasPrice: 6,
-    // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    coinmarketcap: process.env.COINMARKETCAP_API_KEY,
   },
 };

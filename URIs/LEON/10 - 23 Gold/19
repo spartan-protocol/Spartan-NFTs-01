@@ -1,0 +1,21 @@
+{
+  "name": "Leonidas (Gold)",
+  "description": "Inspired by the ancient Greek rulers, defenders of Laconia's river banks - Sparta. Discover five unique illustrations portraying legendary moments in Greek history to celebrate Spartan Protocol's first NFT collection.",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    {
+      "trait_type": "Edition",
+      "value": "Gold"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Mint",
+      "value": 20
+    }
+  ],
+  "image": "ipfs://QmXVBAqcFbBFbStzBWMoAx13qe61hdgKULL32JYQL9YnXB"
+}

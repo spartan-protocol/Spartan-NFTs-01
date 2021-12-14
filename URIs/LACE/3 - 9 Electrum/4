@@ -1,0 +1,21 @@
+{
+  "name": "Lacedaemon (Electrum)",
+  "description": "Inspired by the ancient Greek rulers, defenders of Laconia's river banks - Sparta. Discover five unique illustrations portraying legendary moments in Greek history to celebrate Spartan Protocol's first NFT collection.",
+  "external_url": "https://spartanprotocol.org/",
+  "attributes": [
+    {
+      "trait_type": "Edition",
+      "value": "Electrum"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Epic"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Mint",
+      "value": 5
+    }
+  ],
+  "image": "ipfs://QmZa8k3ScqMXjowFYQXAVEtW9NLwSgtMpvW1FKjq2vDuii"
+}
